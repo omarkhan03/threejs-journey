@@ -10,6 +10,11 @@ body
     overflow: hidden;
 }
 
+body
+{
+    background-color:rgb(212, 231, 229);
+}
+
 .webgl
 {
     position: fixed;
@@ -19,19 +24,25 @@ body
 }
 
 button {
-    font-size: large;
+    font-size: 1.7rem;
     border-radius: 0.5rem;
+    border-width: 0.3rem;
     background-color: aquamarine;
     position: absolute;
     padding: 0.3rem;
     padding-left: 1rem;
     padding-right: 1rem;
-    left: 70%;
+    left: 80%;
 }
 
 button:hover {
     cursor: pointer;
     background-color: lightcyan;
+}
+
+.reset {
+    background-color: bisque;
+    top: 23%;
 }
 
 .f5 {

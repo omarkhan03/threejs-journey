@@ -12,6 +12,7 @@ const floor4 = document.getElementsByClassName('f4')[0]
 const floor3 = document.getElementsByClassName('f3')[0]
 const floor2 = document.getElementsByClassName('f2')[0]
 const floor1 = document.getElementsByClassName('f1')[0]
+const reset = document.getElementsByClassName('reset')[0]
 
 
 /**
@@ -125,7 +126,7 @@ window.addEventListener('resize', () =>
  * Camera
  */
 // Base camera
-const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 3000)
+const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 1000000)
 camera.position.set(-78.6, 32, 45)
 
 camera.rotation.set(-0.06, -0.76, 0.04)
@@ -134,15 +135,26 @@ scene.add(camera)
 
 // Controls
 const controls = new OrbitControls(camera, canvas)
-controls.target.set(0, 0.75, 0)
+controls.saveState()
+controls.target.set(-10, 0, -20)
 controls.enableDamping = true
+
+// Resets camera rotation + selected floor
+reset.addEventListener('click', () => {
+    controls.reset()
+    selected.visible = false
+})
 
 /**
  * Renderer
  */
 const renderer = new THREE.WebGLRenderer({
+    alpha: true,
     canvas: canvas
 })
+renderer.setClearColor(0xffffff, 0);
+
+
 renderer.shadowMap.enabled = true
 renderer.shadowMap.type = THREE.PCFSoftShadowMap
 renderer.setSize(sizes.width, sizes.height)
