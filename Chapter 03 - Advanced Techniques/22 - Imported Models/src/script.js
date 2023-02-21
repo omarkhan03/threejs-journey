@@ -1,6 +1,8 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
+import { ColladaLoader } from 'three/examples/jsm/loaders/ColladaLoader.js'
+
 import * as dat from 'lil-gui'
 
 /**
@@ -30,28 +32,32 @@ const scene = new THREE.Scene()
 /**
  * Helmet
  */
-const gltfLoader = new GLTFLoader()
+// const gltfLoader = new GLTFLoader()
 
-gltfLoader.load(
-    '/models/FlightHelmet/glTF/FlightHelmet.gltf',
-    (gltf) => {
+// gltfLoader.load(
+//     '/models/ICT/ICT.gltf',
+//     (gltf) => {
 
-        console.log(gltf)
+//         console.log(gltf)
 
-        // while(gltf.scene.children.length) {
-        //     scene.add(gltf.scene.children[0])
-        // }
+//         // while(gltf.scene.children.length) {
+//         //     scene.add(gltf.scene.children[0])
+//         // }
 
-        // scene.add(gltf.scene.children[0])
-        // const children = [...gltf.scene.children]
-        // for(const child of children) {
-        //     scene.add(child)
-        // }
+//         // scene.add(gltf.scene.children[0])
+//         // const children = [...gltf.scene.children]
+//         // for(const child of children) {
+//         //     scene.add(child)
+//         // }
 
-        scene.add(gltf.scene)
-    }
-)
+//         scene.add(gltf.scene)
+//     }
+// )
 
+var loader = new ColladaLoader();
+loader.load("/models/ICT/ICT_COLLADA.dae", function (result) {
+    scene.add(result.scene);
+});
 
 /**
  * Floor
@@ -71,7 +77,7 @@ scene.add(floor)
 /**
  * Lights
  */
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.8)
+const ambientLight = new THREE.AmbientLight(0xd6e6ff, 2)
 scene.add(ambientLight)
 
 const directionalLight = new THREE.DirectionalLight(0xffffff, 0.6)
@@ -112,8 +118,9 @@ window.addEventListener('resize', () =>
  * Camera
  */
 // Base camera
-const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
-camera.position.set(2, 2, 2)
+const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 2000)
+camera.position.set(-96, 34, 63)
+camera.rotation.set(-0.3, -0.7, 63)
 scene.add(camera)
 
 // Controls
@@ -140,6 +147,9 @@ let previousTime = 0
 
 const tick = () =>
 {
+    console.log(camera.position)
+    console.log(camera.rotation)
+
     const elapsedTime = clock.getElapsedTime()
     const deltaTime = elapsedTime - previousTime
     previousTime = elapsedTime
