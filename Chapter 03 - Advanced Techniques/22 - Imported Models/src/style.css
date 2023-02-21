@@ -17,3 +17,39 @@ body
     left: 0;
     outline: none;
 }
+
+button {
+    font-size: large;
+    border-radius: 0.5rem;
+    background-color: aquamarine;
+    position: absolute;
+    padding: 0.3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    left: 70%;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: lightcyan;
+}
+
+.f5 {
+    top: 30%;
+}
+
+.f4 {
+    top: 35%;
+}
+
+.f3 {
+    top: 40%;
+}
+
+.f2 {
+    top: 45%;
+}
+
+.f1 {
+    top: 50%;
+}
