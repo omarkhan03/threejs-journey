@@ -135,9 +135,10 @@ scene.add(camera)
 
 // Controls
 const controls = new OrbitControls(camera, canvas)
-controls.saveState()
-controls.target.set(-10, 0, -20)
+controls.target.set(-10, 0, -10)
 controls.enableDamping = true
+controls.saveState()
+
 
 // Resets camera rotation + selected floor
 reset.addEventListener('click', () => {

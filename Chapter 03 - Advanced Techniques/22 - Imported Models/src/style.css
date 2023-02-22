@@ -18,9 +18,17 @@ body
 .webgl
 {
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 7%;
+    right: 7%;
     outline: none;
+}
+
+h1 {
+    font-size: 2rem;
+    position: absolute;
+    top: 3vh;
+    left: 50vw;
+    transform: translateX(-50%);
 }
 
 button {
@@ -42,25 +50,25 @@ button:hover {
 
 .reset {
     background-color: bisque;
-    top: 23%;
+    top: 28%;
 }
 
 .f5 {
-    top: 30%;
-}
-
-.f4 {
     top: 35%;
 }
 
-.f3 {
+.f4 {
     top: 40%;
 }
 
-.f2 {
+.f3 {
     top: 45%;
 }
 
-.f1 {
+.f2 {
     top: 50%;
+}
+
+.f1 {
+    top: 55%;
 }
